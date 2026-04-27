@@ -5,12 +5,12 @@ from textblob import TextBlob
 
 colorama.init()
 
-# Emojis for the start of the program
+
 print(f"{Fore.CYAN} 🐍 Welcome to Sentiment Spy! 🐍{Style.RESET_ALL}")
 
 user_name = input(f"{Fore.MAGENTA}Please enter your name: {Style.RESET_ALL}").strip()
 if not user_name:
-    user_name = "Mystery Agent"  # Fallback if user doesn't provide a name
+    user_name = "Mystery Agent"  
 
 
 conversation_history = []
@@ -73,12 +73,12 @@ while True:
         color = Fore.YELLOW
         emoji = "😭"
 
-    # Store in history
+   
     conversation_history.append((user_input, polarity, sentiment_type))
 
-    # Print result with color, emojis, and polarity
+    
     print(f"{color}{emoji} {sentiment_type} sentiment detected! "
-        f"Polarity: {polarity:.2f}")import colorama
+        f"Polarity: {polarity:<8.2f}")import colorama
 from colorama import Fore, Style
 from textblob import TextBlob
 
