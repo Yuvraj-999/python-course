@@ -1,0 +1,49 @@
+import random
+
+def play_game():
+    options = ["rock", "paper", "scissors"]
+    user_history = []
+    
+    print("--- Welcome to Rock Paper Scissors AI ---")
+    print("Type 'rock', 'paper', or 'scissors' to play. Type 'quit' to exit.")
+
+    while True:
+        user_choice = input("\nYour move: ").lower()
+
+        if user_choice == 'quit':
+            print("Thanks for playing!")
+            break
+
+        if user_choice not in options:
+            print("Invalid choice. Try again.")
+            continue
+
+        # AI Strategy: If the user has a pattern, the AI reacts.
+        # Otherwise, it picks randomly.
+        if len(user_history) >= 2:
+            # Simple strategy: Predict the user repeats their last move
+            most_frequent = max(set(user_history), key=user_history.count)
+            if most_frequent == "rock":
+                ai_choice = "paper"
+            elif most_frequent == "paper":
+                ai_choice = "scissors"
+            else:
+                ai_choice = "rock"
+        else:
+            ai_choice = random.choice(options)
+
+        user_history.append(user_choice)
+        print(f"AI chose: {ai_choice}")
+
+        # Determine winner
+        if user_choice == ai_choice:
+            print("It's a tie!")
+        elif (user_choice == "rock" and ai_choice == "scissors") or \
+             (user_choice == "paper" and ai_choice == "rock") or \
+             (user_choice == "scissors" and ai_choice == "paper"):
+            print("You win!")
+        else:
+            print("AI wins!")
+
+if __name__ == "__main__":
+    play_game()
